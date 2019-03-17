@@ -72,15 +72,15 @@ void correctError(std::vector<int> & messageInt, std::vector<int> error) {
     }
 
     //Jeśli wystąpiły 2 błędy
-    for (int i = 0; i <17; i++) {
-        for (int j = i; j < 17; j++) {
-            for (int k = 0; k < 9; k++) {
+    for (int i = 0; i <H_COL; i++) {
+        for (int j = i; j < H_COL; j++) {
+            for (int k = 0; k < H_ROWS; k++) {
                 //jeśli suma kolumn będzie równa wektorowi error to numery tych kolumn
                 //oznaczają numery uszkodzonych bitów
                 if ((H[k][i] ^ H[k][j]) != error[k]) {
                     break;
                 }
-                if(k == 8) {
+                if(k == H_ROWS - 1) {
                     messageInt[i] ^= 1;
                     messageInt[j] ^= 1;
                     return;
