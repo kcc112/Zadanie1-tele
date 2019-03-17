@@ -64,7 +64,7 @@ void correctError(std::vector<int> & messageInt, std::vector<int> error) {
             if (error[j] != H[j][i]) {
                 break;
             }
-            if (j == 8) {
+            if (j == H_ROWS - 1) {
                 messageInt[i] ^= 1; //(XOR)
                 return;
             }
