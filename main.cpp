@@ -5,6 +5,7 @@ int main() {
     std::vector<int> messageIntCorrect;
     std::vector<int> messageIntDamaged;
     std::string messageString;
+    //bity do modyfikacji
     int bitNumOne;
     int bitNumTwo;
 
@@ -59,6 +60,34 @@ int main() {
 
     std::cout << "Poprawiona wiadomość:" << std::endl;
     writeMessage(messageIntDamaged);
+
+    std::cout << "Kliknij by zakodować wiadomość" << std::endl;
+    std::cin >> bitNumOne; //żeby zatrzymać
+
+    std::vector<unsigned char> message;
+    std::vector<int> messageInt;
+    std::vector<std::string> messageReady;
+
+    //odczytujemy  wiadomość
+    message = readMessageFromFile();
+
+    //zamiana wiadomości na binay string
+    messageReady = cheangeCharToBinString(message);
+
+    for (int i = 0; i < messageReady.size() - 1; i++) {
+        //zamiana na inty
+        messageToInt(messageReady[i], messageInt);
+        //wyliczanie bitów kontrolnych
+        addParityBitsToMessage(messageInt);
+        //zapisanie pierwszzej części wiadomości do pliku
+        writeToFileTxt(messageInt, "plikZakodowany.txt");
+        messageInt.clear();
+    }
+
+    std::cout << "Kliknij by odkodować i poprawić wiadomość" << std::endl;
+    std::cin >> bitNumOne;
+    readWriteFromFileAndFix();
+
 
     return 0;
 }

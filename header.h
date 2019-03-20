@@ -8,6 +8,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <iterator>
+#include <stdio.h>
+#include <bits/stdc++.h> //revere
 
 //zamienia wiadomość zapisaną w stringu na vector<int>
 void messageToInt(std::string messageString, std::vector<int> & messageIntCorrect);
@@ -23,5 +27,17 @@ void checkIfMessageIsCorrect(std::vector<int> & messageInt);
 void addParityBitsToMessage(std::vector<int> & messageInt);
 //do wypisywania wiadomości
 void writeMessage(std::vector<int> messageInt);
+//zamienia char na binary string
+std::vector<std::string> cheangeCharToBinString(std::vector<unsigned char> message);
+
+//////////PLIKI/////////////////////////
+//odczytuje wiadomość z pliku
+std::vector<unsigned char> readMessageFromFile();
+//zapisuje wiadomość do pliku jako string
+void writeToFileTxt(std::vector<int> messageInt, std::string name);
+//zapisuje do pliku odkodowanom wiadomość
+void writeCharToFile(char input);
+//odczytuje i naprawia wiadomość + zapis do pliku
+void readWriteFromFileAndFix();
 
 #endif //ZAD1A_TELE_INCLUDE_H
